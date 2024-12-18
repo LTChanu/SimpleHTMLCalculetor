@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EEI3346 LAB Test 04</title>
+</head>
+<body style="background-color: #fff;">
+     <div>
+        <h1 style="text-align : center;">Calculator</h1>
+      </div>
+        <div style="text-align : center; border : 1px solid black; width : 30%; margin-left :35%;">
+          <p id="display" style= "background-color : gray; height : 25px;"></p>
+          <select id="mySelect" onchange="display()">
+            <option value="select" hidden>Select</option>
+            <option value="Add" >Add</option>
+            <option value="Sub">Sub</option>
+            <option value="Mul">Mul</option>
+            <option value="Div">Div</option>
+          </select><br>
+          <input id="in1" name="in1" type="number"><br>
+          <input id="in2" name="in2" type="number"><br>
+          <input id="in3" name="in3" type="number"><br>
+          <button id="Cal" onclick="Calculate()">Calculate</button>
+          <button id="clea" onclick="clea()">Clear</button><br>
+          <p id="out"></p>
+        </div>
+    <script>
+      function display(){
+        var selected=document.getElementById("mySelect").value;
+        document.getElementById("display").innerHTML = selected;
+
+        
+        if(selected=="Div"){
+          document.getElementById("in3").hidden=true;
+        }else{
+          document.getElementById("in3").hidden=false;
+        }
+      }
+      display();
+
+      function Calculate(){
+        var selected=document.getElementById("mySelect").value;
+        var In1=document.getElementById("in1").value;
+        var In2=document.getElementById("in2").value;
+        var In3=document.getElementById("in3").value;
+        var ans;
+
+        if(selected=="Add"){
+          ans= In1*5/5+In2*5/5+In3*5/5;
+          document.getElementById("out").innerHTML=ans;
+        }else if(selected=="Sub"){
+          ans=In1-In2-In3;
+          document.getElementById("out").innerHTML=ans;
+        }else if(selected=="Mul"){
+          ans=In1*In2*In3;
+          document.getElementById("out").innerHTML=ans;
+        }else if(selected=="Div"){
+          if(In2==0){
+            alert("You can’t divide by Zero");
+          }else{
+            ans=In1/In2;
+            document.getElementById("out").innerHTML=ans;
+          }
+        }
+      }
+
+      function clea(){
+            document.getElementById("in1").value='';
+            document.getElementById("in2").value='';
+            document.getElementById("in3").value='';
+            document.getElementById("out").innerHTML="0";
+            document.getElementById("mySelect").value="Select";
+            document.querySelector("body").style.backgroundColor="#D90404";
+      }
+    </script>
+</body>
+</html>
